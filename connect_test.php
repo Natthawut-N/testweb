@@ -9,6 +9,6 @@
     $conn = new mysqli(hostname,user,password,dbname);
     $conn->query("SELECT * FROM `bookstore` WHERE 1");
     if($conn->connect_error) echo "fail";
-    else echo "pass";
+    else echo " ";
 
 ?>
