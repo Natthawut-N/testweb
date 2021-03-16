@@ -11,19 +11,32 @@
     $JsonFile = file_get_contents("movies.json");
     $array = json_decode($JsonFile,true);
     ?>
-    <select name="" id="year_movie">
-
-        <?php 
-        for ($i=0; $i < 10; $i++) { 
-            foreach ($array as $key => $value) {
-            echo "<option value='{$value}'>".$value["year"]." : ".$value["title"]."</option>";
-        }
-        }
-        ?>
+    <div style="width: 150;">
+    Year:
+    <select name="" id="year">
+    </select><br>
+    movie name :
+    <select name="" id="movie">
+    </select><br>
+    </div>
     <script>
     var str = "";
     var jsonEx = <?php echo $JsonFile; ?>;
+
+    var doc = document.getElementById("year_movie");
+    // for ( i = 0;i < array.leng ;i++) {
+    //     var option = document.createElement("option") ;
+    //     option.text = i;
+    //     doc.add(option);
+    //     }
+    html = "";
+    for (var key in jsonEx){
+        html += "<option value= "+ key + ">" +jsonEx[key].year +""+jsonEx[key].title+"</option>";
+    }
+    document.getElementById("year").innerHTML = html;
     </script>
-    <div id="output"></div>
+    <div id="output">
+    
+    </div>
 </body>
 </html>
