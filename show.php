@@ -25,7 +25,8 @@ echo "<td>ราคาหนังสือ </td> <td>จำนวนเช่�
 echo "<td>รูปภาพ </td> <td>วันที่ซื้อ</td></tr>";
   // output data of each row
   while($row = $result->fetch_assoc()) {
-    echo "<tr><td>".$row["book_id"].
+    echo "<tr>
+    <td>".$row["book_id"].
     "</td><td>".$row["book_name"].
     "</td><td>".$row["type_id"].
     "</td><td>".$row["status_id"].
