@@ -10,15 +10,15 @@
 <center>
 <h1>SHOPSHOCK</h1><br><br>
 <h3>กรุณากรอกชื่อผู้ใช้แหละรหัสผ่านเพื่อเช้าสู่ระบบ</h3>
-     <form action="" method="post">
+     <form action="verified.php" method="post">
     <table>
     <tr>
     <td> <label for="">username :</label></td>
-    <td><input type="text" name="" id="name"></td>
+    <td><input type="text" name="username" id=""></td>
     </tr>
     <tr>
     <td> <label for="">password :</label></td>
-    <td><input type="text" name="" id="nickname"> </td>
+    <td><input type="password" name="password" id=""> </td>
     </tr>
     <tr>
     <td></td>
