@@ -18,7 +18,7 @@ if ($result->num_rows>0){
     echo"<h1><center>ยินดีต้อนรับเข้าสู่เมนูลูกค้า</h1>";
     echo"<center><a href='#'>สั่งซื้อสินค้า</a>
             <a href='#'>ชำระเงิน</a>
-            <a href='#'>ออกจากระบบ</a>";
+            <a href='logout.php'>ออกจากระบบ</a>";
     echo"<center><h1>SHOPSHOCK</h1>";
     echo"<center><h2>Select Product to Cart</h2>";
     echo "<table width='100%' border='1' align='center'>";

@@ -1,5 +1,4 @@
-<?php
-    session_start();
+<?php 
 define("hostname","localhost");
 define("user","root");
 define("password","");
@@ -13,39 +12,27 @@ else echo " ";
 $conn->set_charset("utf8");
 ?>
 <?php 
- if(isset($_POST['username'])){
-                  $username = $_POST['username'];
-                  $password = $_POST['password'];
+  $user = $_POST['username'];
+  $pass = $_POST['password'];
 
-                  $sql="SELECT * FROM member 
-                  WHERE  user='".$username."' 
-                  AND  password='".$password."' ";
-                  $result = mysqli_query($con,$sql);
-if(mysqli_num_rows($result)==1){
-                      $row = mysqli_fetch_array($result);
+$sql = "SELECT * FROM member WHERE user = '$user' and password = '$pass'";
+  $query = mysqli_query($conn,$sql);
+  $row = mysqli_num_rows($query);
+  $result = mysqli_fetch_array($query);
 
-                      $_SESSION["ID"] = $row["ID"];
-                      $_SESSION["name"] = $row["name"];
-                      $_SESSION["type"] = $row["type"];
-
-                      if($_SESSION["type"]=="02"){ 
-
-                        Header("Location: admin.php");
-                      }
-                  if ($_SESSION["type"]=="member"){ 
-
-                        Header("Location: member.php");
-                      }
-                  }else{
-                    echo "<script>";
-                        echo "alert(\" user หรือ  password ไม่ถูกต้อง\");"; 
-                        echo "window.history.back()";
-                    echo "</script>";
- 
-                  }
-        }else{
-
-             Header("Location: index.php"); //user & password incorrect back to login again
- 
-        }
+  if ($row) {
+    $_SESSION['member_id'] = $result[0];
+    $_SESSION['name'] = $result[1];
+    $_SESSION['type'] = $result[4];
+      if ($result[4] == 2) {
+        echo "ยินดีต้อนรับ  ".$result[1];
+        header("Refresh:1 url=productlist.php");
+      }else{
+        echo "ยินดีต้อนรับ  ".$result[1];
+        header("Refresh:1 url=productlist.php");
+      }
+  }else{
+    echo "ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง ลองใหม่อีกครั้ง";
+    header("Refresh:1; url=login.php");
+  }
 ?>

@@ -14,11 +14,11 @@
     <table>
     <tr>
     <td> <label for="">username :</label></td>
-    <td><input type="text" name="username" id=""></td>
+    <td><input type="text" name="username" required></td>
     </tr>
     <tr>
     <td> <label for="">password :</label></td>
-    <td><input type="password" name="password" id=""> </td>
+    <td><input type="password" name="password" required> </td>
     </tr>
     <tr>
     <td></td>
