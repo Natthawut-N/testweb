@@ -16,6 +16,12 @@
         <div id="out"></div>
         <br>
         <div id="out2"></div>
+        <br>
+         <div id="out3"></div>
+        <br>
+
+     
+        
     </center>
     <script>
     let arr;
@@ -26,7 +32,6 @@
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){
             if(this.readyState==4 && this.status==200){
-                alert(arr);
                 arr= JSON.parse(this.responseText);
                 text = "<table border='1'>";
                 for(i=0;i<label.length-1;i++){
@@ -66,12 +71,36 @@
 
     function open_bill(idx,cus_id){
         qty = document.getElementById("n"+idx);
+        out3 = document.createElement("out3");
         price = arr[idx][5];
-        //alert("product_code="+arr[idx][1]+"="+qty.value+"price");
+     
         let xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function(){ 
             if(this.readyState==4 && this.status==200){
-                alert(this.responseText);
+                //alert(this.responseText);
+                arr2 = JSON.parse(this.responseText);
+                t1 =JSON.parse(arr2["bill"])[0];
+                text += "<table border='1'><tr>";
+                text +="<tr><th>Bill_id</th><th>cus_id</th><th>EmpID</th><th>Bill Date</th><th>bill status</th><th>Remask</th></tr>";
+                for ( i = 0; i <t1.length; i++) {
+                    text += "<td>"+t1[i]+"</td>";
+                }
+                text +="</tr></table>";
+                out3.innerHTML =text;
+                text = "<table border='1'>";
+                for(i=0;i<label.length-1;i++){
+                    text += "<th>"+label[i]+"</th>";
+                }
+                text = "<tr>"+text+"</tr>";
+                for(i=0;i<arr.length;i++){
+                    for(j=0;j<arr[i].length-1;j++){
+                        text += "<td>"+arr[i][j]+"</td>";
+                    }
+                    text += "<td>"+"<button onclick='sel_product("+i+")'>< ShopShock ></button>"+"<td>";
+                    text = "<tr>"+text+"</tr>";
+                }
+
+                text += "</table>";
             }
         }
         xhttp.open("POST","product_rest.php",true);
