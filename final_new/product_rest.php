@@ -58,9 +58,9 @@
                 }
 
             $sql = "SELECT * FROM bill WHERE Bill_Id={$bill_result[0][0]}";
-            $bill_head =$db->query($sql,MYSQLI_ASSOC);
+            $bill_head =$db->query($sql,MYSQLI_NUM);
             $sql = "SELECT * FROM bill_detail WHERE Bill_Id={$bill_result[0][0]}";
-            $bill_detail = $db->query($sql,MYSQLI_ASSOC);
+            $bill_detail = $db->query($sql,MYSQLI_NUM);
         }
     }
         return ["step"=>$step,"bill"=>$bill_head,"bill_detail"=>$bill_detail];

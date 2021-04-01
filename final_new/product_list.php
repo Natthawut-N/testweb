@@ -71,7 +71,7 @@
 
     function open_bill(idx,cus_id){
         qty = document.getElementById("n"+idx);
-        out3 = document.createElement("out3");
+        out3 = document.getElementById("out3");
         price = arr[idx][5];
      
         let xhttp = new XMLHttpRequest();
